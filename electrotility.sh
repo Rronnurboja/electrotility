@@ -28,7 +28,7 @@ log() {
     echo "$(date '+%Y-%m-%d %H:%M:%S') - $1" >> "$LOG_FILE"
 }
 
-# ASCII Art
+# ASCII Art (Vergil & Dante >> )
 show_banner() {
     clear
     echo -e "${RED}"
