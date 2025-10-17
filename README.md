@@ -20,7 +20,9 @@ curl -o electrotility.sh https://raw.githubusercontent.com/Rronnurboja/electroti
 chmod +x electrotility.sh
 ./electrotility.sh
 ```
-# Or use command-line options
+```
+# You can use command-line options additionaly
 ./electrotility.sh --help
 ./electrotility.sh --update
 ./electrotility.sh --beast
+```
