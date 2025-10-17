@@ -11,6 +11,18 @@ Ultimate Linux Power Management System - Complete Professional Edition
 - 🛠️ **System Tools** - Monitoring, network, security, disk utilities
 - 🎉 **Fun & Entertainment** - Games, visual effects, AI tools
 - 🐉 **Beast Mode** - Install everything with one command
+- 
+
+## 📦 Package Installation
+
+### Arch Linux (AUR)
+[![AUR version](https://img.shields.io/aur/version/electrotility)](https://aur.archlinux.org/packages/electrotility)
+
+```bash
+yay -S electrotility
+# or
+paru -S electrotility
+```
 
 ## Installation
 
