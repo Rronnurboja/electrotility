@@ -1,3 +1,5 @@
+cat > PKGBUILD << 'EOF'
+
 # Maintainer: Rron Nurboja <rronnurboja@gmail.com>
 pkgname=electrotility
 pkgver=2.0.0
