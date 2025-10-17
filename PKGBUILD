@@ -22,3 +22,4 @@ package() {
   cd "$pkgname-$pkgver"
   install -Dm755 electrotility.sh "$pkgdir/usr/bin/electro"
 }
+EOF
