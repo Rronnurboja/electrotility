@@ -16,7 +16,7 @@ Ultimate Linux Power Management System - Complete Professional Edition
 
 ```bash
 # Download and run
-curl -o electrotility.sh https://raw.githubusercontent.com/yourusername/electrotility/main/electrotility.sh
+curl -o electrotility.sh https://raw.githubusercontent.com/Rronnurboja/electrotility/main/electrotility.sh
 chmod +x electrotility.sh
 ./electrotility.sh
 
