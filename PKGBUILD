@@ -1,3 +1,4 @@
+cd ~/Documents
 cat > PKGBUILD << 'EOF'
 
 # Maintainer: Rron Nurboja <rronnurboja@gmail.com>
