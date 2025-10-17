@@ -1,0 +1,13 @@
+cat > .gitignore << 'EOF'
+
+*.log
+
+*.tmp
+*.temp
+
+*~
+*.bak
+
+.DS_Store
+Thumbs.db
+EOF
