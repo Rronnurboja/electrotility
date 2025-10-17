@@ -19,7 +19,7 @@ Ultimate Linux Power Management System - Complete Professional Edition
 curl -o electrotility.sh https://raw.githubusercontent.com/Rronnurboja/electrotility/main/electrotility.sh
 chmod +x electrotility.sh
 ./electrotility.sh
-
+```
 # Or use command-line options
 ./electrotility.sh --help
 ./electrotility.sh --update
