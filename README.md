@@ -1,6 +1,6 @@
 # ⚡ Electrotility - Super LinUtil
 
-Ultimate Linux Power System Utility
+Ultimate Linux Power System Utility Tool
 
 ## Features
 
