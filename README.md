@@ -11,7 +11,6 @@ Ultimate Linux Power System Utility Tool
 - 🛠️ **System Tools** - Monitoring, network, security, disk utilities
 - 🎉 **Fun & Entertainment** - Games, visual effects, AI tools
 - 🐉 **Beast Mode** - Install everything with one command
-- 
 
 ## 📦 Package Installation
 
