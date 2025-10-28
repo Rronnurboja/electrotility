@@ -192,7 +192,7 @@ show_subtab_header() {
     local color=$2
     echo -e "${color}"
     echo "┌────────────────────────────────────────────────────────────────────────┐"
-    printf "│ %-70s │\n" "$title"
+    printf "│ %-72s │\n" "$title"
     echo "└────────────────────────────────────────────────────────────────────────┘"
     echo -e "${NC}"
 }
@@ -4676,10 +4676,11 @@ tools_tab() {
         echo -e "  ${GREEN}4${NC}) 🔧 Hardware Tools"
         echo -e "  ${GREEN}5${NC}) 🛡️  Security Tools"
         echo -e "  ${GREEN}6${NC}) 🔒 VPN Tools"
+        echo -e "  ${GREEN}7${NC}) 📦 Package Managers"
         echo ""
         echo -e "${YELLOW}0${NC}) 🔙 Back to Main Menu"
         echo ""
-        read -p "Choose subtab [0-6]: " choice
+        read -p "Choose subtab [0-7]: " choice
 
         case $choice in
             1) tools_monitoring_subtab ;;
@@ -4688,6 +4689,7 @@ tools_tab() {
             4) tools_hardware_subtab ;;
             5) tools_security_subtab ;;
             6) tools_vpn_subtab ;;
+            7) tools_package_manager ;;
             0) break ;;
             *) echo -e "${RED}❌ Invalid choice!${NC}"; sleep 1 ;;
         esac
@@ -5394,6 +5396,118 @@ EOF
     fi
 }
 
+tools_package_manager() {
+	while true; do
+		show_banner
+		show_subtab_header "📦 PACKAGE MANAGERS" "$GREEN"
+		echo ""
+		echo -e "${PURPLE}Minimal GUI:${NC}"
+		echo -e "  ${PURPLE}1${NC}) Pacseek"
+		echo -e "  ${PURPLE}2${NC}) Octopi"
+		echo ""
+		echo -e "${MAGENTA}Regular GUI:${NC}"
+		echo -e "  ${MAGENTA}3${NC}) Bazaar"
+		echo -e "  ${MAGENTA}4${NC}) Pamac (Arch only)" 
+		echo ""
+        echo -e "${YELLOW}0${NC}) 🔙 Back to Tools Tab"
+        echo ""
+        read -p "Choose the package manager to install [0-4]: " choice
+        
+        case $choice in
+			1) install_pacseek ;;
+			2) install_octopi ;;
+			3) install_bazaar ;;
+			4) install_pamac ;; 
+			0) break ;;
+            *) echo -e "${RED}❌ Invalid choice!${NC}"; sleep 1 ;;
+        esac
+    done
+}
+
+install_pacseek() {
+	echo -e "${GREEN}📥 Installing pacseek...${NC}"
+	
+	case "$PKG_MANAGER" in
+		"yay" | "paru" | "pacman")
+			sudo "$PKG_MANAGER" -S pacseek
+			;;
+		
+		"dnf" | "apt" | "snap" | "zypper")
+			sudo "PKG_MANAGER" install pacseek
+			;;
+			
+		*)
+			install_smart "pacseek" "pacseek" "pacseek" "pacseek" "Pacseek"
+			;;
+			
+	esac
+	echo -e "${GREEN}✅ Pacseek installed! To run it just type: pacseek${NC}"; sleep 3
+		
+}
+
+install_octopi() {
+	echo -e "${GREEN}📥 Installing octopi...${NC}"
+	
+	case "$PKG_MANAGER" in
+		"yay" | "paru" | "pacman")
+			sudo "$PKG_MANAGER" -S octopi
+			;;
+		
+		"dnf" | "apt" | "snap" | "zypper")
+			sudo "PKG_MANAGER" install octopi
+			;;
+			
+		*)
+			install_smart "octopi" "octopi" "octopi" "octopi" "Octopi"
+			;;
+			
+	esac
+	echo -e "${GREEN}✅ Octopi installed! To run it just type: octopi${NC}"; sleep 3
+	
+}
+
+install_bazaar() {
+	echo -e "${GREEN}📥 Installing Bazaar...${NC}"
+	
+	case "$PKG_MANAGER" in
+		"yay" | "paru" | "pacman")
+			sudo "$PKG_MANAGER" -S bzr
+			;;
+		
+		"dnf" | "apt" | "snap" | "zypper")
+			sudo "PKG_MANAGER" install bzr
+			;;
+			
+		*)
+			install_smart "bzr" "bzr" "bzr" "bzr" "Bazaar"
+			;;
+			
+	esac
+	echo -e "${GREEN}✅ Bazaar installed! To run it just type: bazaar${NC}"; sleep 3
+	
+}
+
+install_pamac() {
+	echo -e "${GREEN}📥 Installing Pamac...${NC}"
+	
+	case "$PKG_MANAGER" in
+		"yay" | "paru" | "pacman")
+			sudo "$PKG_MANAGER" -S pamac
+			;;
+		
+		"dnf" | "apt" | "snap" | "zypper")
+			echo -e "Sorry. Arch only!"
+			break ;;
+			
+		*)
+			install_smart "pamac" "pamac" "pamac" "pamac" "Pamac"
+			;;
+			
+	esac
+	echo -e "${GREEN}✅ Pamac installed! To run it just type: pamac (it will intruct you)${NC}"; sleep 3
+	
+}
+
 # ============================================================================
 # FUN TAB - COMPLETE WITH ALL FEATURES
 # ============================================================================
@@ -5407,7 +5521,7 @@ fun_tab() {
         echo -e "${BOLD}Choose Subtab:${NC}"
         echo -e "  ${GREEN}1${NC}) 🎮 Terminal Games"
         echo -e "  ${GREEN}2${NC}) 🎨 ASCII Art & Visual"
-        echo -e "  ${GREEN}3${NC}) 🔥 Visual Effects"
+        echo -e "  ${GREEN}3${NC}) 🔥 Visual Effects & Shaders"
         echo -e "  ${GREEN}4${NC}) 🎵 Music & Sound"
         echo -e "  ${GREEN}5${NC}) 🤖 AI, Coding GPT & Fun Scripts"
         echo -e "  ${GREEN}6${NC}) 📚 Reading & Books"
@@ -5776,7 +5890,7 @@ install_lolcat() {
     install_smart "lolcat" "lolcat" "lolcat" "lolcat" "Lolcat"
     if [ $? -eq 0 ]; then
         echo -e "${GREEN}🌈 Lolcat installed!${NC}"
-        echo "Electr OS is awesome!" | lolcat
+        echo "Electrotility is awesome!" | lolcat
     fi
 }
 
@@ -5784,7 +5898,7 @@ install_toilet() {
     install_smart "toilet" "toilet" "toilet" "toilet" "Toilet"
     if [ $? -eq 0 ]; then
         echo -e "${GREEN}🚽 Toilet installed!${NC}"
-        toilet -f mono12 "Electr OS"
+        toilet -f mono12 "Electrotility"
     fi
 }
 
@@ -5792,7 +5906,7 @@ install_boxes() {
     install_smart "boxes" "boxes" "boxes" "boxes" "Boxes"
     if [ $? -eq 0 ]; then
         echo -e "${GREEN}📦 Boxes installed!${NC}"
-        echo "Electr OS" | boxes -d dog
+        echo "Electrotility" | boxes -d dog
     fi
 }
 
@@ -5828,7 +5942,7 @@ show_fortune_cow() {
 
 show_random_art() {
     arts=(
-        "🐉 Electr OS - Power Your World! ⚡"
+        "🐉 Electrotility - Power Your World! ⚡"
         "🚀 Welcome to the Future of Linux! 🌟"
         "⚡ Experience Lightning Fast Performance! 💨"
         "🎯 Precision. Power. Performance. 🏆"
@@ -5897,9 +6011,12 @@ fun_visual_subtab() {
         echo -e "  ${BLUE}14${NC}) Progress Bar"
         echo -e "  ${BLUE}15${NC}) Digital Clock"
         echo ""
+        echo -e "${MAGENTA}'u' Shaders:${NC}"
+        echo -e "  ${MAGENTA}16${NC}) Axerola FX ReShade (reshade videogames)"
+        echo ""
         echo -e "${YELLOW}0${NC}) 🔙 Back to Fun Tab"
         echo ""
-        read -p "Choose effect [0-15]: " choice
+        read -p "Choose effect [0-16]: " choice
 
         case $choice in
             1) run_cmatrix ;;
@@ -5917,6 +6034,7 @@ fun_visual_subtab() {
             13) run_spinning_loader ;;
             14) run_progress_bar ;;
             15) run_digital_clock ;;
+            16) run_reshade ;;
             0) break ;;
             *) echo -e "${RED}❌ Invalid choice!${NC}" ;;
         esac
@@ -6120,6 +6238,38 @@ run_banner() {
     fi
 }
 
+
+run_reshade() {
+
+echo "Acerola FX - Simple Launcher"
+echo "============================"
+
+# Download ReShade if missing
+if [ ! -f "ReShade_Setup_6.6.1.exe" ]; then
+    echo "Downloading ReShade 6.6.1..."
+    wget https://reshade.me/downloads/ReShade_Setup_6.6.1.exe || curl -L -o ReShade_Setup_6.6.1.exe https://reshade.me/downloads/ReShade_Setup_6.6.1.exe
+fi
+
+# Check for Wine
+if ! command -v wine > /dev/null; then
+    echo "Installing Wine..."
+    sudo pacman -Sy --noconfirm wine wine-gecko wine-mono
+fi
+
+echo "Launching ReShade installer..."
+echo "When it opens:"
+echo "1. Select your game .exe"
+echo "2. Pick DirectX 10/11/12" 
+echo "3. Download standard shaders"
+echo
+echo "LAUNCHING IN 3 SECONDS..."
+sleep 3
+
+# This should definitely launch it
+wine ReShade_Setup_6.6.1.exe
+
+}
+
 # Fun Music Subtab - COMPLETE
 fun_music_subtab() {
     while true; do
@@ -6131,32 +6281,36 @@ fun_music_subtab() {
         echo -e "  ${GREEN}2${NC}) SoX (Play sounds)"
         echo -e "  ${GREEN}3${NC}) Beep (PC Speaker)"
         echo -e "  ${GREEN}4${NC}) Cava (Audio Visualizer)"
-        echo -e "  ${GREEN}5${NC}) MIDI Players"
-        echo -e "  ${GREEN}6${NC}) Spotify"
-        echo -e "  ${GREEN}7${NC}) Nuclear (Free Music Player)"
+        echo -e "  ${GREEN}5${NC}) Songfetch (Fastfetch for songs)"
+        echo -e "  ${GREEN}6${NC}) MIDI Players"
+        echo -e "  ${GREEN}7${NC}) Spotify"
+        echo -e "  ${GREEN}8${NC}) Nuclear (Free Music Player)"
+        echo -e "  ${GREEN}9${NC}) Shortwave (Radio App)"
         echo ""
         echo -e "${BLUE}🎶 Sound Effects:${NC}"
-        echo -e "  ${BLUE}8${NC}) Play System Beep"
-        echo -e "  ${BLUE}9${NC}) Generate Sine Wave"
-        echo -e "  ${BLUE}10${NC}) Drum Machine"
-        echo -e "  ${BLUE}11${NC}) Text to Speech"
+        echo -e "  ${BLUE}10${NC}) Play System Beep"
+        echo -e "  ${BLUE}11${NC}) Generate Sine Wave"
+        echo -e "  ${BLUE}12${NC}) Drum Machine"
+        echo -e "  ${BLUE}13${NC}) Text to Speech"
         echo ""
         echo -e "${YELLOW}0${NC}) 🔙 Back to Fun Tab"
         echo ""
-        read -p "Choose option [0-11]: " choice
+        read -p "Choose option [0-13]: " choice
 
         case $choice in
             1) install_mplayer ;;
             2) install_sox ;;
             3) install_beep ;;
             4) install_cava ;;
-            5) install_midi_players ;;
-            6) install_spotify ;;
-            7) install_nuclear ;;
-            8) play_system_beep ;;
-            9) generate_sine_wave ;;
-            10) play_drum_machine ;;
-            11) install_text_to_speech ;;
+            5) install_songfetch ;;
+            6) install_midi_players ;;
+            7) install_spotify ;;
+            8) install_nuclear ;;
+            9) install_shortwave ;;
+            10) play_system_beep ;;
+            11) generate_sine_wave ;;
+            12) play_drum_machine ;;
+            13) install_text_to_speech ;;
             0) break ;;
             *) echo -e "${RED}❌ Invalid choice!${NC}" ;;
         esac
@@ -6241,6 +6395,27 @@ install_nuclear() {
     fi
 }
 
+install_shortwave() {
+	echo -e "${GREEN}📻 Installing Shortwave...${NC}"
+    
+	case "$PKG_MANAGER" in
+		"yay" | "paru" | "pacman")
+			sudo "$PKG_MANAGER" -S shortwave
+			;;
+		
+		"dnf" | "apt" | "snap" | "zypper")
+			sudo "PKG_MANAGER" install shortwave
+			;;
+			
+		*)
+			install_smart "shortwave" "shortwave" "shortwave" "shortwave" "Shortwave"
+			;;
+			
+	esac
+	echo -e "${GREEN}✅ Shortwave Radio installed! To run it just type: shortwave${NC}"; sleep 3
+
+}
+
 install_sox() {
     install_smart "sox" "sox" "sox" "sox" "SoX"
 }
@@ -6309,6 +6484,12 @@ play_drum_machine() {
     fi
 }
 
+install_songfetch() {
+# COMING SOON ...
+echo -e "${YELLOW}Sorry. Not yet available.${NC}"
+
+}
+
 install_text_to_speech() {
     if install_smart "espeak" "espeak" "espeak" "espeak" "eSpeak"; then
         echo -e "${GREEN}🗣️  Text to Speech installed!${NC}"
@@ -6331,7 +6512,7 @@ fun_ai_subtab() {
         echo -e "  ${GREEN}3${NC}) Magic 8-Ball"
         echo -e "  ${GREEN}4${NC}) Random Quote Generator"
         echo -e "  ${GREEN}5${NC}) Dad Joke Generator"
-        echo -e "  ${GREEN}6${NC}) Terminal GPT"
+        echo -e "  ${GREEN}6${NC}) Terminal Coding GPT"
         echo ""
         echo -e "${BLUE}🎭 Interactive Fun:${NC}"
         echo -e "  ${BLUE}7${NC}) Guess the Number"
@@ -6688,12 +6869,13 @@ reading_subtab() {
         echo ""
         echo -e "${PURPLE}🌐 Encyclopedia & Docs:${NC}"
         echo -e "  ${PURPLE}8${NC}) Wiki.js (Local Wikipedia)"
-        echo -e "  ${PURPLE}9${NC}) Zim (Desktop wiki)"
-        echo -e "  ${PURPLE}10${NC}) Koodo Reader (Web-based)"
+        echo -e "  ${PURPLE}9${NC}) Wike (Modern Mini-Wikipedia)"
+        echo -e "  ${PURPLE}10${NC}) Zim (Desktop wiki)"
+        echo -e "  ${PURPLE}11${NC}) Koodo Reader (Web-based)"
         echo ""
         echo -e "${YELLOW}0${NC}) 🔙 Back to Fun Tab"
         echo ""
-        read -p "Choose app to install [0-10]: " choice
+        read -p "Choose app to install [0-11]: " choice
 
         case $choice in
             1) install_foliate ;;
@@ -6704,8 +6886,9 @@ reading_subtab() {
             6) install_mcomix ;;
             7) install_yacreader ;;
             8) install_wikijs ;;
-            9) install_zim ;;
-            10) install_koodo_reader ;;
+            9) install_wike ;;
+            10) install_zim ;;
+            11) install_koodo_reader ;;
             0) break ;;
             *) echo -e "${RED}❌ Invalid choice!${NC}" ;;
         esac
@@ -6790,6 +6973,27 @@ install_wikijs() {
     echo -e "  2. Node.js: npm install -g wiki.js"
     echo -e "  3. Visit: https://js.wiki/ for setup guide"
     echo -e "${YELLOW}💡 Recommended: Use Docker for easy setup${NC}"
+}
+
+install_wike() {
+	echo -e "${GREEN}🌐 Installing Wike...${NC}"
+    
+	case "$PKG_MANAGER" in
+		"yay" | "paru" | "pacman")
+			sudo "$PKG_MANAGER" -S wike
+			;;
+		
+		"dnf" | "apt" | "snap" | "zypper")
+			sudo "PKG_MANAGER" install wike
+			;;
+			
+		*)
+			install_smart "wike" "wike" "wike" "wike" "Wike"
+			;;
+			
+	esac
+	echo -e "${GREEN}✅ Wike installed! To run it just type: wike${NC}"; sleep 3
+    
 }
 
 install_zim() {
@@ -6899,6 +7103,7 @@ beast_mode() {
     install_package "lolcat" "Lolcat"
     install_package "figlet" "Figlet"
     install_komikku
+    install_wike
     
     # Install Flatpak if not available
     if ! command -v flatpak &> /dev/null; then
@@ -7342,10 +7547,10 @@ main_menu() {
         echo -e "    Browsers, Multimedia, YT Alternatives, Productivity, Creative"
         echo ""
         echo -e "${RED}🛠️  5) TOOLS TAB${NC}"
-        echo -e "    Monitoring, Network, Security, VPN, Disk, Hardware"
+        echo -e "    Monitoring, Network, Security, VPN, Disk, Hardware, Package Managers"
         echo ""
         echo -e "${MAGENTA}🎉 6) FUN TAB${NC}"
-        echo -e "    Games, Visual Effects, Music, AI & GPT, Books, Entertainment"
+        echo -e "    Games, Shaders, Visual Effects, Music & Radio, AI & GPT, Books, Entertainment"
         echo ""
         echo -e "${YELLOW}⚡ 7) BEAST MODE${NC}"
         echo -e "    INSTALL EVERYTHING AWESOME"
