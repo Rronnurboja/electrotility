@@ -10,7 +10,7 @@ Ultimate Linux Power System Utility Tool
 - 📱 **Applications** - Browsers, multimedia, productivity apps, music & more
 - 🛠️ **System Tools** - Monitoring, network, security, disk utilities & more
 - 🎉 **Fun & Entertainment** - Games, visual effects, AI tools (including Coding GPT), E-books & more
-- 🐉 **Beast Mode** - Install everything with one command
+- 🐉 **Beast Mode** - Install the cool stuff with one command
 
 ## 📦 Package Installation
 
