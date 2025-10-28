@@ -4,12 +4,12 @@ Ultimate Linux Power System Utility Tool
 
 ## Features
 
-- 🖥️ **System Management** - Updates, drivers, backup, monitoring
-- 💻 **Development Tools** - IDEs, languages, containers, databases  
+- 🖥️ **System Management** - Updates, drivers, backup, monitoring, theme configuration
+- 💻 **Development Tools** - IDEs, languages, containers, databases, DevOps  
 - 🎮 **Gaming Setup** - Launchers, Wine, performance tools
-- 📱 **Applications** - Browsers, multimedia, productivity apps
+- 📱 **Applications** - Browsers, multimedia, productivity apps, music
 - 🛠️ **System Tools** - Monitoring, network, security, disk utilities
-- 🎉 **Fun & Entertainment** - Games, visual effects, AI tools
+- 🎉 **Fun & Entertainment** - Games, visual effects, AI tools, E-books
 - 🐉 **Beast Mode** - Install everything with one command
 
 ## 📦 Package Installation
