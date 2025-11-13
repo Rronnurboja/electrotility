@@ -23,7 +23,7 @@ yay -S electrotility
 paru -S electrotility
 ```
 
-## General Installation (guaranteed to work)
+## General Installation - Any Distro (guaranteed to work)
 
 ```bash
 # Download and run
