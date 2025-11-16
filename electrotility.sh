@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Super LinUtil - COMPLETE Professional Edition
-# Fully functional with all features working
-
 # Global variables
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 LOG_FILE="$SCRIPT_DIR/super_linutil.log"
