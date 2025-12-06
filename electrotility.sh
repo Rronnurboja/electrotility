@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 # Global variables
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 LOG_FILE="$SCRIPT_DIR/super_linutil.log"
@@ -3338,26 +3337,28 @@ apps_productivity_subtab() {
         echo -e "  ${GREEN}2${NC}) OnlyOffice"
         echo -e "  ${GREEN}3${NC}) FreeOffice"
         echo -e "  ${GREEN}4${NC}) WPS Office"
+        echo -e "  ${GREEN}5${NC}) Vex Excel File Viewer"
         echo ""
         echo -e "${BLUE}📝 Note Taking:${NC}"
-        echo -e "  ${BLUE}5${NC}) Obsidian"
-        echo -e "  ${BLUE}6${NC}) Joplin"
-        echo -e "  ${BLUE}7${NC}) Standard Notes"
-        echo -e "  ${BLUE}8${NC}) CherryTree"
+        echo -e "  ${BLUE}6${NC}) Obsidian"
+        echo -e "  ${BLUE}7${NC}) Joplin"
+        echo -e "  ${BLUE}8${NC}) Standard Notes"
+        echo -e "  ${BLUE}9${NC}) CherryTree"
         echo ""
         echo -e "${YELLOW}0${NC}) 🔙 Back to Apps Tab"
         echo ""
-        read -p "Choose app to install [0-8]: " choice
+        read -p "Choose app to install [0-9]: " choice
 
         case $choice in
             1) install_libreoffice ;;
             2) install_onlyoffice ;;
             3) install_freeoffice ;;
             4) install_wpsoffice ;;
-            5) install_obsidian ;;
-            6) install_joplin ;;
-            7) install_standard_notes ;;
-            8) install_cherrytree ;;
+            5) install_vex ;;
+            6) install_obsidian ;;
+            7) install_joplin ;;
+            8) install_standard_notes ;;
+            9) install_cherrytree ;;
             0) break ;;
             *) echo -e "${RED}❌ Invalid choice!${NC}" ;;
         esac
