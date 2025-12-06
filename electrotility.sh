@@ -3078,31 +3078,33 @@ apps_tubes_subtab() {
         echo -e "  ${GREEN}1${NC}) FreeTube"
         echo -e "  ${GREEN}2${NC}) MiniTube"
         echo -e "  ${GREEN}3${NC}) PeerTube Desktop"
+        echo -e "  ${GREEN}4${NC}) GrayJay"
         echo ""
         echo -e "${BLUE}📱 Mobile Clients (Info):${NC}"
-        echo -e "  ${BLUE}4${NC}) LibreTube"
-        echo -e "  ${BLUE}5${NC}) NewPipe"
-        echo -e "  ${BLUE}6${NC}) SkyTube"
+        echo -e "  ${BLUE}5${NC}) LibreTube"
+        echo -e "  ${BLUE}6${NC}) NewPipe"
+        echo -e "  ${BLUE}7${NC}) SkyTube"
         echo ""
         echo -e "${CYAN}🔧 Video Tools:${NC}"
-        echo -e "  ${CYAN}7${NC}) yt-dlp (Downloader)"
-        echo -e "  ${CYAN}8${NC}) Invidious (Web Client)"
-        echo -e "  ${CYAN}9${NC}) Celluloid (Video Player)"
+        echo -e "  ${CYAN}8${NC}) yt-dlp (Downloader)"
+        echo -e "  ${CYAN}9${NC}) Invidious (Web Client)"
+        echo -e "  ${CYAN}10${NC}) Celluloid (Video Player)"
         echo ""
         echo -e "${YELLOW}0${NC}) 🔙 Back to Apps Tab"
         echo ""
-        read -p "Choose app to install [0-9]: " choice
+        read -p "Choose app to install [0-10]: " choice
 
         case $choice in
             1) install_freetube ;;
             2) install_minitube ;;
             3) install_peertube_desktop ;;
-            4) install_libretube ;;
-            5) install_newpipe ;;
-            6) install_skytube ;;
-            7) install_ytdlp ;;
-            8) install_invidious ;;
-            9) install_celluloid ;;
+            4) install_grayjay ;;
+            5) install_libretube ;;
+            6) install_newpipe ;;
+            7) install_skytube ;;
+            8) install_ytdlp ;;
+            9) install_invidious ;;
+            10) install_celluloid ;;
             0) break ;;
             *) echo -e "${RED}❌ Invalid choice!${NC}" ;;
         esac
@@ -3180,6 +3182,32 @@ install_peertube_desktop() {
     echo -e "${YELLOW}💡 Alternative: Use PeerTube in your web browser at${NC}"
     echo -e "${BLUE}   https://joinpeertube.org/ or any PeerTube instance${NC}"
 }
+
+install_grayjay() {
+    echo -e "${GREEN}📺 Installing GrayJay...${NC}"
+    if 		
+    	case "$PKG_MANAGER" in
+		"yay" | "paru" | "pacman")
+			sudo "$PKG_MANAGER" -S flatpak
+			;;
+		
+		"dnf" | "apt" | "snap" | "zypper")
+			sudo "$PKG_MANAGER" install flatpak
+			;;
+			
+		*)
+			install_smart "flatpak" "flatpak" "flatpak" "flatpak" "Flatpak"
+			;;
+			
+	esac 
+    	flatpak install flathub app.grayjay.Grayjay
+    	flatpak run app.grayjay.Grayjay; then
+        echo -e "${GREEN}✅ GrayJay installed!${NC}"
+    else
+        echo -e "${YELLOW}📥 Download from: https://grayjay.app/desktop/${NC}"
+    fi
+}
+
 
 install_libretube() {
     echo -e "${GREEN}📱 LibreTube (Android App)${NC}"
@@ -5548,7 +5576,7 @@ install_octopi() {
 			;;
 		
 		"dnf" | "apt" | "snap" | "zypper")
-			sudo "PKG_MANAGER" install octopi
+			sudo "$PKG_MANAGER" install octopi
 			;;
 			
 		*)
@@ -5569,7 +5597,7 @@ install_bazaar() {
 			;;
 		
 		"dnf" | "apt" | "snap" | "zypper")
-			sudo "PKG_MANAGER" install bzr
+			sudo "$PKG_MANAGER" install bzr
 			;;
 			
 		*)
@@ -5577,7 +5605,7 @@ install_bazaar() {
 			;;
 			
 	esac
-	echo -e "${GREEN}✅ Bazaar installed! To run it just type: bazaar${NC}"; sleep 3
+	echo -e "${GREEN}✅ Bazaar installed! To run it just type: bazaar or bzr${NC}"; sleep 3
 	
 }
 
