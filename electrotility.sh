@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Super LinUtil - COMPLETE Professional Edition
+# Fully functional with all features working
+
 # Global variables
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 LOG_FILE="$SCRIPT_DIR/super_linutil.log"
@@ -4513,10 +4516,11 @@ development_databases_subtab() {
         echo -e "  ${BLUE}6${NC}) Redis"
         echo -e "  ${BLUE}7${NC}) SQLite Browser"
         echo -e "  ${BLUE}8${NC}) DBeaver"
+        echo -e "  ${BLUE}9${NC}) Vex - Excel file viewer"
         echo ""
         echo -e "${YELLOW}0${NC}) 🔙 Back to Development Tab"
         echo ""
-        read -p "Choose database to install [0-8]: " choice
+        read -p "Choose database to install [0-9]: " choice
 
         case $choice in
             1) install_postgresql ;;
@@ -4527,6 +4531,7 @@ development_databases_subtab() {
             6) install_redis ;;
             7) install_sqlite_browser ;;
             8) install_dbeaver ;;
+            9) install_vex ;; 
             0) break ;;
             *) echo -e "${RED}❌ Invalid choice!${NC}" ;;
         esac
@@ -4565,6 +4570,99 @@ install_sqlite_browser() {
 
 install_dbeaver() {
     install_flatpak "io.dbeaver.DBeaverCommunity" "DBeaver"
+}
+
+install_vex() {
+	echo -e "${GREEN}📥 Installing Vex...${NC}"
+	if
+		case "$PKG_MANAGER" in
+			"yay" | "paru" | "pacman")
+				sudo "$PKG_MANAGER" -S yay
+				yay -S vex-tui-bin
+				;;
+			
+			"dnf" | "apt" | "snap" | "zypper")
+				sudo "$PKG_MANAGER" install git
+				sudo "$PKG_MANAGER" install golang
+				go install github.com/CodeOne45/vex-tui@latest
+				# Clone the repository
+				git clone https://github.com/CodeOne45/vex-tui.git
+				cd vex-tui
+
+				# Install dependencies
+				go mod download
+
+				# Build
+				go build -o vex .
+
+				# Optional: Install globally
+				go install
+				;;
+				
+			*)
+				install_smart "vex-tui" "vex-tui" "vex-tui" "vex-tui" "Vex-tui"
+				;;
+				
+		esac
+		then
+	
+	echo -e "${GREEN}✅ Vex installed! To run it, type: vex sample_file.xlsx
+	
+	Additionally, follow the instructions:
+
+	# Basic usage
+	vex data.xlsx
+
+	# With a specific theme
+	vex report.csv --theme nord
+
+	# Short flag
+	vex sales.xlsx -t tokyo-night
+
+	# Keyboard Shortcuts
+	Navigation
+	↑↓←→ or hjkl - Navigate cells
+	Page Up/Down - Scroll by page
+	Ctrl+U/D - Alternative page scroll
+	Home/End or 0/$ - First/last column
+	g/G - First/last column
+	Tab/Shift+Tab - Next/previous sheet
+
+	Search & Actions
+	/ - Search (vim-style)
+	n/N - Next/previous result
+	Ctrl+G - Jump to cell
+	Enter - View cell details
+	c - Copy cell
+	C - Copy entire row
+	f - Toggle formula display
+	e - Export sheet
+	t - Theme selector
+	? - Toggle help
+	q or Ctrl+C - Quit
+
+	Data Visualization
+	Step 1: Select Data Range
+
+	Navigate to your data
+	Press 'V' (shift+v) to start selection
+	Move cursor to select range (arrows/hjkl)
+	Press 'V' again to finish selection
+	Step 2: Visualize
+
+	Press 'v' (lowercase) to open visualization
+	Press 1-4 to switch between chart types:
+	1: Bar Chart
+	2: Line Chart
+	3: Sparkline
+	4: Pie Chart
+	Press Esc to close${NC}
+	"; sleep 3
+
+	else 
+	echo -e "❌ Installation failed! For more, please check: 
+	https://github.com/CodeOne45/vex-tui";sleep 3
+	fi
 }
 
 # Development Tools Subtab - COMPLETE
@@ -4796,7 +4894,7 @@ tools_network_subtab() {
     done
 }
 
-# REAL Network Tools
+# Network Tools
 install_nmap() {
     install_smart "nmap" "nmap" "nmap" "nmap" "Nmap"
 }
