@@ -33,7 +33,7 @@ curl -o electrotility.sh https://raw.githubusercontent.com/Rronnurboja/electroti
 chmod +x electrotility.sh
 ./electrotility.sh
 ```
-```
+```bash
 # You can use command-line options additionaly
 ./electrotility.sh --help
 ./electrotility.sh --update
