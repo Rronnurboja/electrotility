@@ -19,7 +19,9 @@ Ultimate Linux Power System Utility Tool
 
 ```bash
 yay -S electrotility
-# or
+```
+or
+```bash
 paru -S electrotility
 ```
 
