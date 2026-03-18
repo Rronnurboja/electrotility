@@ -230,7 +230,7 @@ check_internet() {
 }
 
 # ============================================================================
-# SYSTEM TAB - COMPLETE WITH ALL FEATURES
+# SYSTEM TAB 
 # ============================================================================
 
 system_tab() {
@@ -2220,7 +2220,7 @@ set_default_apps() {
     fi
 }
 
-# System Security Subtab - COMPLETE
+# System Security Subtab 
 system_security_subtab() {
     while true; do
         show_banner
@@ -2252,7 +2252,7 @@ system_security_subtab() {
     done
 }
 
-# REAL Security Functions
+# Security Functions
 configure_firewall() {
     echo -e "${BLUE}🔥 Configuring firewall...${NC}"
     
@@ -2697,7 +2697,7 @@ convert_iso_format() {
 }
 
 # ============================================================================
-# APPS TAB - COMPLETE WITH ALL FEATURES
+# APPS TAB 
 # ============================================================================
 
 apps_tab() {
@@ -2775,7 +2775,7 @@ apps_browsers_subtab() {
     done
 }
 
-# REAL Browser Installation Functions
+# Browser Installation Functions
 install_firefox() {
     if install_smart "firefox" "firefox" "firefox" "firefox" "Firefox"; then
         echo -e "${GREEN}✅ Firefox installed successfully!${NC}"
@@ -2944,7 +2944,7 @@ install_zen_browser() {
 }
     
 
-# Apps Multimedia Subtab - COMPLETE
+# Apps Multimedia Subtab 
 apps_multimedia_subtab() {
     while true; do
         show_banner
@@ -3308,7 +3308,7 @@ apps_utilities_subtab() {
     done
 }
 
-# REAL Utilities Functions
+# Utilities Functions
 install_gnome_boxes() {
     install_smart "gnome-boxes" "gnome-boxes" "gnome-boxes" "gnome-boxes" "GNOME Boxes"
 }
@@ -3354,7 +3354,7 @@ install_synaptic() {
     install_smart "synaptic" "synaptic" "synaptic" "synaptic" "Synaptic"
 }
 
-# Apps Productivity Subtab - COMPLETE
+# Apps Productivity Subtab 
 apps_productivity_subtab() {
     while true; do
         show_banner
@@ -3394,7 +3394,7 @@ apps_productivity_subtab() {
     done
 }
 
-# REAL Productivity Functions
+# Productivity Functions
 install_libreoffice() {
     install_smart "libreoffice-fresh" "libreoffice" "libreoffice" "libreoffice" "LibreOffice"
 }
@@ -3432,7 +3432,7 @@ install_cherrytree() {
     install_smart "cherrytree" "cherrytree" "cherrytree" "cherrytree" "CherryTree"
 }
 
-# Apps Creative Subtab - COMPLETE
+# Apps Creative Subtab 
 apps_creative_subtab() {
     while true; do
         show_banner
@@ -3550,7 +3550,7 @@ install_hydrogen() {
 }
 
 # ============================================================================
-# GAMING TAB - COMPLETE WITH ALL FEATURES
+# GAMING TAB 
 # ============================================================================
 
 gaming_tab() {
@@ -3565,10 +3565,11 @@ gaming_tab() {
         echo -e "  ${GREEN}3${NC}) 🚀 Performance Tools"
         echo -e "  ${GREEN}4${NC}) ♟️  Casual Games"
         echo -e "  ${GREEN}5${NC}) 🎲 Game Emulators"
+        echo -e "  ${GREEN}6${NC}) 🛠️  Cheat Engines"
         echo ""
         echo -e "${YELLOW}0${NC}) 🔙 Back to Main Menu"
         echo ""
-        read -p "Choose subtab [0-5]: " choice
+        read -p "Choose subtab [0-6]: " choice
 
         case $choice in
             1) gaming_launchers_subtab ;;
@@ -3576,13 +3577,14 @@ gaming_tab() {
             3) gaming_performance_subtab ;;
             4) gaming_casual_subtab ;;
             5) gaming_emulators_subtab ;;
+            6) gaming_cheat_engines_subtab ;;
             0) break ;;
             *) echo -e "${RED}❌ Invalid choice!${NC}"; sleep 1 ;;
         esac
     done
 }
 
-# Gaming Launchers Subtab - COMPLETE
+# Gaming Launchers Subtab 
 gaming_launchers_subtab() {
     while true; do
         show_banner
@@ -3620,7 +3622,7 @@ gaming_launchers_subtab() {
     done
 }
 
-# REAL Gaming Functions
+# Gaming Functions
 
 install_steam() {
     echo -e "${GREEN}🎮 Installing Steam...${NC}"
@@ -3725,7 +3727,7 @@ install_legendary() {
     install_smart "legendary" "legendary" "legendary" "legendary" "Legendary"
 }
 
-# Gaming Wine Subtab - COMPLETE
+# Gaming Wine Subtab 
 gaming_wine_subtab() {
     while true; do
         show_banner
@@ -3763,7 +3765,7 @@ gaming_wine_subtab() {
     done
 }
 
-# REAL Wine Functions
+# Wine Functions
 install_wine() {
     install_smart "wine-staging" "wine-staging" "wine" "wine" "Wine Staging"
 }
@@ -3806,7 +3808,7 @@ install_gamemode() {
     install_smart "gamemode" "gamemode" "gamemode" "gamemode" "Gamemode"
 }
 
-# Gaming Performance Subtab - COMPLETE
+# Gaming Performance Subtab 
 gaming_performance_subtab() {
     while true; do
         show_banner
@@ -3844,7 +3846,7 @@ gaming_performance_subtab() {
     done
 }
 
-# REAL Performance Functions
+# Performance Functions
 install_mangohud() {
     install_smart "mangohud" "mangohud" "mangohud" "mangohud" "MangoHud"
 }
@@ -3892,7 +3894,7 @@ configure_cpu_power() {
     fi
 }
 
-# Gaming Casual Subtab - COMPLETE
+# Gaming Casual Subtab 
 gaming_casual_subtab() {
     while true; do
         show_banner
@@ -3932,7 +3934,7 @@ gaming_casual_subtab() {
     done
 }
 
-# REAL Game Functions
+# Game Functions
 install_chess() {
     install_smart "gnome-chess" "gnome-chess" "gnome-chess" "gnome-chess" "Chess"
 }
@@ -3969,7 +3971,7 @@ install_xonotic() {
     install_smart "xonotic" "xonotic" "xonotic" "xonotic" "Xonotic"
 }
 
-# Gaming Emulators Subtab - COMPLETE
+# Gaming Emulators Subtab 
 gaming_emulators_subtab() {
     while true; do
         show_banner
@@ -4048,8 +4050,69 @@ install_genymotion() {
     echo -e "${YELLOW}📥 Download from: https://www.genymotion.com/${NC}"
 }
 
+
+# Gaming Cheatr Engines Subtab 
+gaming_cheat_engines_subtab() {
+    while true; do
+        show_banner
+        show_subtab_header "🛠️ CHEAT ENGINES" "$ORANGE"
+        echo ""
+        echo -e "  ${GREEN}1${NC}) Game Conqueror"
+        echo ""
+        echo -e "${YELLOW}0${NC}) 🔙 Back to Gaming Tab"
+        echo ""
+        read -p "Choose launcher to install [0-1]: " choice
+
+        case $choice in
+            1) install_game_conqueror ;;
+            0) break ;;
+            *) echo -e "${RED}❌ Invalid choice!${NC}" ;;
+        esac
+        read -p "Press [Enter] to continue..."
+    done
+}
+
+
+install_game_conqueror() {
+
+    echo -e "${GREEN}🔧 Installing Game Conqueror...${NC}"
+    
+    # GIMP has different package names across distros
+    case "$PKG_MANAGER" in
+        "pacman")
+            # Arch Linux
+            install_package "gameconqueror" "GameConqueror"
+            ;;
+        "apt")
+            # Ubuntu/Debian
+            install_package "gameconqueror" "GameConqueror"
+            ;;
+        "dnf")
+            # Fedora/RHEL
+            install_package "gameconqueror" "GameConqueror"
+            ;;
+        "zypper")
+            # openSUSE
+            install_package "gameconqueror" "GameConqueror"
+            ;;
+        *)
+            # Fallback - try common names
+            if install_package "gameconqueror" "GameConqueror"; then
+                return 0
+            elif install_package "gameconqueror" "GameConqueror"; then
+                return 0
+            else
+                echo -e "${YELLOW}📥 Download from: https://www.github.com/scanmem/scanmem${NC}"
+            fi
+            ;;
+    esac
+
+}
+
+
+
 # ============================================================================
-# DEVELOPMENT TAB - COMPLETE WITH ALL FEATURES
+# DEVELOPMENT TAB 
 # ============================================================================
 
 development_tab() {
@@ -4238,7 +4301,7 @@ development_languages_subtab() {
     done
 }
 
-# REAL Language Functions
+# Language Functions
 install_python() {
     install_smart "python python-pip" "python3 python3-pip" "python3 python3-pip" "python3 python3-pip" "Python 3 + pip"
 }
